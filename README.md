@@ -12,4 +12,6 @@ Type `npm run develop` then copy **http://localhost:4001/** and paste it onto yo
 
 *Note: Please ensure that nodejs is installed prior to the steps above.*
 
+### Play the demo [here](https://jeth88.github.io/avatarux_test_slot/dist/)
+
 > That's it! Happy coding!
