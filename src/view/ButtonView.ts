@@ -24,7 +24,7 @@ export class ButtonView {
 
     private async preloadAssets(): Promise<void> {
         const buttonKeys = ["spin", "soundOn", "soundOff"];
-        const buttonPaths = ["./../img/Spin.png", "./../img/sound_on.png", "./../img/sound_off.png"];
+        const buttonPaths = ["./img/Spin.png", "./img/sound_on.png", "./img/sound_off.png"];
 
         for (const idx in buttonKeys) {
             PIXI.Assets.add(buttonKeys[idx], buttonPaths[idx])

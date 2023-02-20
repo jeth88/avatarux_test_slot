@@ -15,12 +15,12 @@ export class ReelsView {
         // "bonus"
     ];
     private readonly SYMBOL_PATHS: string[] = [
-        "./../img/9.png", "./../img/10.png", "./../img/J.png", "./../img/Q.png", "./../img/K.png", "./../img/A.png",
-        "./../img/H1.png", "./../img/H2.png", "./../img/H3.png", "./../img/H4.png", "./../img/H5.png", "./../img/H6.png",
+        "./img/9.png", "./img/10.png", "./img/J.png", "./img/Q.png", "./img/K.png", "./img/A.png",
+        "./img/H1.png", "./img/H2.png", "./img/H3.png", "./img/H4.png", "./img/H5.png", "./img/H6.png",
 
         //// MPs and Bonus are commented for more chances of winning
-        // "./../img/M1.png", "./../img/M2.png", "./../img/M3.png", "./../img/M4.png", "./../img/M5.png", "./../img/M6.png",
-        // "./../img/BONUS.png"
+        // "./img/M1.png", "./img/M2.png", "./img/M3.png", "./img/M4.png", "./img/M5.png", "./img/M6.png",
+        // "./img/BONUS.png"
     ];
     private readonly SYMBOL_TRANSFORM_KEYS: string[] = [
         "lp1_connect", "lp2_connect", "lp3_connect", "lp4_connect", "lp5_connect", "lp6_connect",
@@ -31,12 +31,12 @@ export class ReelsView {
         // "bonus_connect"
     ];
     private readonly SYMBOL_TRANSFORM_PATHS: string[] = [
-        "./../img/9_connect.png", "./../img/10_connect.png", "./../img/J_connect.png", "./../img/Q_connect.png", "./../img/K_connect.png", "./../img/A_connect.png",
-        "./../img/H1_connect.png", "./../img/H2_connect.png", "./../img/H3_connect.png", "./../img/H4_connect.png", "./../img/H5_connect.png", "./../img/H6_connect.png",
+        "./img/9_connect.png", "./img/10_connect.png", "./img/J_connect.png", "./img/Q_connect.png", "./img/K_connect.png", "./img/A_connect.png",
+        "./img/H1_connect.png", "./img/H2_connect.png", "./img/H3_connect.png", "./img/H4_connect.png", "./img/H5_connect.png", "./img/H6_connect.png",
 
         //// MPs and Bonus are commented for more chances of winning
-        // "./../img/M1_connect.png", "./../img/M2_connect.png", "./../img/M3_connect.png", "./../img/M4_connect.png", "./../img/M5_connect.png", "./../img/M6_connect.png",
-        // "./../img/BONUS.png"
+        // "./img/M1_connect.png", "./img/M2_connect.png", "./img/M3_connect.png", "./img/M4_connect.png", "./img/M5_connect.png", "./img/M6_connect.png",
+        // "./img/BONUS.png"
     ];
     private readonly REEL_SYMBOLS_TARGET_Y_POS: number[] = [300, 200, 100];
     private readonly REELS_SPIN_START_DELAYS: number[] = [0, 100, 200, 300, 400];
@@ -58,7 +58,7 @@ export class ReelsView {
 
     constructor(winLabelView: WinLabelView) {
         this._reelStopSnd = new Howl({
-            src: ["./../sound/reelstop.mp3"],
+            src: ["./sound/reelstop.mp3"],
             volume: 0.5
         });
         this._winFeature = new WinFeature();

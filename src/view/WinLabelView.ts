@@ -13,7 +13,7 @@ export class WinLabelView {
     constructor(app: PIXI.Application) {
         this._app = app;
         this._winSnd = new Howl({
-            src: ["./../sound/win.wav"]
+            src: ["./sound/win.wav"]
         });
         this._winLabelContainer = new PIXI.Container();
 

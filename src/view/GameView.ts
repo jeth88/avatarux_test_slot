@@ -19,7 +19,7 @@ export class GameView {
         PixiPlugin.registerPIXI(PIXI)
 
         const backgroundSnd = new Howl({
-            src: ["./../sound/background.mp3"],
+            src: ["./sound/background.mp3"],
             loop: true,
         });
         backgroundSnd.play();

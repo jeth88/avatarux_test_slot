@@ -1,6 +1,7 @@
 import * as PIXI from "pixi.js";
 export declare class WinLabelView {
     private _app;
+    private _winSnd;
     private _winLabelContainer;
     private _winLabelText;
     constructor(app: PIXI.Application);
