@@ -1,0 +1,36 @@
+import * as PIXI from "pixi.js";
+import { WinLabelView } from './WinLabelView';
+export declare class ReelsView {
+    private readonly SYMBOL_KEYS;
+    private readonly SYMBOL_PATHS;
+    private readonly SYMBOL_TRANSFORM_KEYS;
+    private readonly SYMBOL_TRANSFORM_PATHS;
+    private readonly REEL_SYMBOLS_TARGET_Y_POS;
+    private readonly REELS_SPIN_START_DELAYS;
+    private readonly CLEAR_SYMBOLS_DELAY;
+    private readonly SYMBOL_DROP_DURATION;
+    private _reelStopSnd;
+    private _winFeature;
+    private _winLabelView;
+    private _reelsContainer;
+    private _reelWithMaskContainer;
+    private _normalTexturesPromise;
+    private _transformTexturesPromise;
+    private _app;
+    set app(value: PIXI.Application);
+    constructor(winLabelView: WinLabelView);
+    private preloadAssets;
+    private prepareReels;
+    private createReels;
+    private createReel;
+    private createMask;
+    private repositionReels;
+    private clearAllSymbols;
+    private startDroppingSymbols;
+    private dropSymbolsPerReel;
+    private dropSymbolsResolved;
+    private getRandomSymbol;
+    repositionAndScaleReels(scaleFactor: number): void;
+    generateNewSymbols(): Promise<void>;
+    checkWinnings(): void;
+}

@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+      "noImplicitAny": true,
+      "target": "ES5",
+      "module": "ES2015",
+      "sourceMap": true,
+      "moduleResolution": "node",
+      "declaration": true,
+      "declarationDir": "./src/types",
+      "paths": {
+         "pixi.js": [
+           "./node_modules/pixi.js/index.d.ts" 
+         ],
+         "*": ["./*", "./node_modules/*/index.d.ts", "./node_modules/*/types/index.d.ts"]  
+      },
+      "allowSyntheticDefaultImports": true, 
+      "allowUmdGlobalAccess": true,         
+      "baseUrl": "./",
+      "esModuleInterop": true,
+      "resolveJsonModule": true
+  },
+}
