@@ -135,6 +135,9 @@ export class ReelsView {
     private clearAllSymbols(): Promise<void> {
         return new Promise((resolve) => {
             this._reelsContainer.forEach((reelContainer) => {
+                for (let symbol of reelContainer.children) {
+                    symbol.destroy();
+                }
                 reelContainer.removeChildren();
             });
 
@@ -181,6 +184,18 @@ export class ReelsView {
         return symbolSprite;
     }
 
+    private dimNonWinningSymbols(sum: string): void {
+        if (sum === '0') return;
+
+        this._reelsContainer.forEach((reelContainer) => {
+            for (let symbol of reelContainer.children) {
+                if (!symbol.name.includes("_connect")) {
+                    (symbol as PIXI.Sprite).tint = 0x808080;
+                }
+            }
+        });
+    }
+
     public repositionAndScaleReels(scaleFactor: number): void {
         this.repositionReels();
         this._reelWithMaskContainer.scale.set(scaleFactor);
@@ -194,9 +209,13 @@ export class ReelsView {
 
     public checkWinnings(): void {
         const { allSymbolWins, sum } = this._winFeature.getWinData();
+
         allSymbolWins.forEach((data) => {
             data.texture = PIXI.Texture.from(this._transformTexturesPromise[`${data.name}_connect`].baseTexture.resource.src);
+            data.name = `${data.name}_connect`;
         })
+
+        this.dimNonWinningSymbols(sum);
         this._winLabelView.setWinLabel(sum);
     }
 }

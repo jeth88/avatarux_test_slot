@@ -30,6 +30,7 @@ export declare class ReelsView {
     private dropSymbolsPerReel;
     private dropSymbolsResolved;
     private getRandomSymbol;
+    private dimNonWinningSymbols;
     repositionAndScaleReels(scaleFactor: number): void;
     generateNewSymbols(): Promise<void>;
     checkWinnings(): void;

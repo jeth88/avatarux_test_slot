@@ -24,11 +24,11 @@ export class WinLabelView {
         this._winLabelText = HelperUtil.createDynamicText({
             text: 'WIN: 0',
             fontFamily: ['Verdana', 'Geneva', 'Tahoma', 'sans-serif'],
-            fontSize: 22,
+            fontSize: 28,
             align: 'center',
-            color: '0xffff00',
+            color: '0xe5af32',
             positionX: -190,
-            positionY: GameController.GAME_HEIGHT - 165,
+            positionY: GameController.GAME_HEIGHT - 150,
             anchorX: 0.5,
         });
 

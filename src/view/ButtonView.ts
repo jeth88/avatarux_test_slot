@@ -32,6 +32,8 @@ export class ButtonView {
 
         this._texturesPromise = await PIXI.Assets.load(buttonKeys);
 
+        this._app.stage.addChild(this._buttonsContainer);
+
         this.createSpinButton();
         this.createSoundToggleButton();
     }
@@ -49,7 +51,8 @@ export class ButtonView {
             spinButton.interactive = false;
             spinButton.tint = 0x808080;
             setTimeout(() => {
-                spinButton.interactive = true; spinButton.tint = 0xFFFFFF;
+                spinButton.interactive = true;
+                spinButton.tint = 0xFFFFFF;
                 this._reelsView.checkWinnings();
             }, this.SPIN_DISABLED_DURATION);
 
@@ -57,7 +60,6 @@ export class ButtonView {
         });
 
         this._buttonsContainer.addChild(spinButton);
-        this._app.stage.addChild(this._buttonsContainer);
     }
 
     private createSoundToggleButton(): void {
@@ -66,10 +68,10 @@ export class ButtonView {
         const soundOffTexture = PIXI.Texture.from(this._texturesPromise["soundOff"].baseTexture.resource.src);
 
         const soundButton = new PIXI.Sprite(soundOnTexture);
-        soundButton.scale.set(0.5);
+        soundButton.scale.set(0.7);
         soundButton.anchor.set(0.5);
-        soundButton.x = 240;
-        soundButton.y = GameController.GAME_HEIGHT - 80;
+        soundButton.x = 232;
+        soundButton.y = GameController.GAME_HEIGHT - 135;
 
         soundButton.interactive = true;
         soundButton.cursor = "pointer";
