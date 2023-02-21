@@ -6,6 +6,7 @@ export declare class ReelsView {
     private readonly SYMBOL_TRANSFORM_KEYS;
     private readonly SYMBOL_TRANSFORM_PATHS;
     private readonly REEL_SYMBOLS_TARGET_Y_POS;
+    private readonly REEL_POP_SYMBOLS_TARGET_Y_POS;
     private readonly REELS_SPIN_START_DELAYS;
     private readonly CLEAR_SYMBOLS_DELAY;
     private readonly SYMBOL_DROP_DURATION;
@@ -34,4 +35,8 @@ export declare class ReelsView {
     repositionAndScaleReels(scaleFactor: number): void;
     generateNewSymbols(): Promise<void>;
     checkWinnings(): void;
+    private startPopupSymbolAnimation;
+    private resizeReelMask;
+    private popupWinSymbols;
+    private resizeReelsContainer;
 }

@@ -8,9 +8,16 @@ interface ISymbolData {
     occurrencesPerReel?: number[]
 }
 
+export interface ISymbolWinData {
+    symbol: PIXI.Sprite,
+    reelIdx: number,
+    rowIdx: number
+}
+
 export class WinFeature {
     private _symbolData: ISymbolData[];
     private _allSymbolWins: PIXI.Sprite[];
+    private _allSymbolWinsData: ISymbolWinData[];
 
     private _reelsContainer: PIXI.Container[];
     public set reelsContainer(value: PIXI.Container[]) {
@@ -49,12 +56,19 @@ export class WinFeature {
     }
 
     private initializeFirstReel(reelContainer: PIXI.Container): void {
-        for (let symbol of reelContainer.children) {
+        for (let idx in reelContainer.children) {
+            const symbol = reelContainer.getChildAt(parseInt(idx)) as PIXI.Sprite;
+
             this._symbolData.push({
-                symbol: symbol as PIXI.Sprite,
+                symbol: symbol,
                 count: 1,
             });
-            this._allSymbolWins.push(symbol as PIXI.Sprite);
+            this._allSymbolWins.push(symbol);
+            this._allSymbolWinsData.push({
+                symbol: symbol,
+                reelIdx: 0,
+                rowIdx: parseInt(idx)
+            });
         }
     }
 
@@ -86,6 +100,12 @@ export class WinFeature {
                     if (this._symbolData[symbolLen].symbol.name === reelContainer.getChildAt(reelChildrenLen).name && this._symbolData[symbolLen].occurrencesPerReel[reelIdx - 1]) {
                         this._allSymbolWins.push(reelContainer.getChildAt(reelChildrenLen) as PIXI.Sprite);
 
+                        this._allSymbolWinsData.push({
+                            symbol: reelContainer.getChildAt(reelChildrenLen) as PIXI.Sprite,
+                            reelIdx: reelIdx,
+                            rowIdx: reelChildrenLen
+                        });
+
                         if (!isChanged) {
                             isChanged = true;
                             this._symbolData[symbolLen].count++;
@@ -109,12 +129,17 @@ export class WinFeature {
             this._allSymbolWins = this._allSymbolWins.filter((symbol) => {
                 return deletedElement[0].symbol.name !== symbol.name;
             });
+
+            this._allSymbolWinsData = this._allSymbolWinsData.filter((element) => {
+                return deletedElement[0].symbol.name !== element.symbol.name;
+            });
         }
     }
 
     private getSymbolData(): void {
         this._symbolData = [];
         this._allSymbolWins = [];
+        this._allSymbolWinsData = [];
 
         this._reelsContainer.forEach((reelContainer, reelIdx) => {
             reelIdx === 0
@@ -153,9 +178,12 @@ export class WinFeature {
     private resetAllSymbolWins(): void {
         this._allSymbolWins = [];
         this._allSymbolWins.length = 0;
+
+        this._allSymbolWinsData = [];
+        this._allSymbolWinsData.length = 0;
     }
 
-    public getWinData(): { allSymbolWins: PIXI.Sprite[], sum: string } {
+    public getWinData(): { allSymbolWins: PIXI.Sprite[], sum: string, allSymbolWinsData: ISymbolWinData[] } {
         let sum = 0;
         this.getSymbolData();
 
@@ -186,7 +214,8 @@ export class WinFeature {
 
         return {
             allSymbolWins: this._allSymbolWins,
-            sum: sum.toString()
+            sum: sum.toString(),
+            allSymbolWinsData: this._allSymbolWinsData
         }
     }
 }

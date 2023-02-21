@@ -1,7 +1,13 @@
 import * as PIXI from "pixi.js";
+export interface ISymbolWinData {
+    symbol: PIXI.Sprite;
+    reelIdx: number;
+    rowIdx: number;
+}
 export declare class WinFeature {
     private _symbolData;
     private _allSymbolWins;
+    private _allSymbolWinsData;
     private _reelsContainer;
     set reelsContainer(value: PIXI.Container[]);
     private populateFirstReel;
@@ -15,5 +21,6 @@ export declare class WinFeature {
     getWinData(): {
         allSymbolWins: PIXI.Sprite[];
         sum: string;
+        allSymbolWinsData: ISymbolWinData[];
     };
 }
